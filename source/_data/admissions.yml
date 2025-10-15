@@ -1,0 +1,33 @@
+header:
+  title: "AI+移动创新实验室"
+  subtitle: "2025年度招新开始啦"
+  subtitle_en: "THE RECRUITMENT OF 2025 HAS STARTED"
+
+about_lab:
+  content: "中北大学AI+移动互联创新实验室以培养本科生创新能力为首要目标,旨在通过真实项目实践培养学生的创新能力、实践精神和综合素质。目前研究方向有Android开发、人工智能、嵌入式开发、机器学习、计算机视觉等。"
+
+research_orientation:
+  title: "研究方向"
+  title_en: "RESEARCH ORIENTATION"
+  groups:
+    - name: "程序/程序组AI方向:"
+      items: "应用开发、人工智能、计算机视觉"
+    - name: "硬件组:"
+      items: "嵌入式开发、物联网开发、RT-thread"
+    - name: "UI组:"
+      items: "UI软件原型设计、美工设计"
+
+results_presentation:
+  title: "成果展示"
+  title_en: "PRESENTATION OF RESULTS"
+  content: "实验室成员在计算机设计大赛,人工智能及机器人大赛,华北五省计算机应用大赛,Robotcup机器人世界杯中国赛等多项赛事中屡获殊荣,并拥有多项软件著作权与专利。"
+
+brainstorm:
+  title: "头脑风暴"
+  title_en: "BRAINSTORM"
+  content: "实验室不定期会举行培训会和赛前头脑风暴,锻炼学生的思维能力与技术。同学们之间互相交流想法,指导老师也会对学生的想法提出建议和指导。"
+
+footer:
+  tel: "TEL: 13080316726"
+  qq_group: "实验室纳新群,欢迎你的加入: 820740615"
+  qr_code_path: "/medias/images/qr-code.png"

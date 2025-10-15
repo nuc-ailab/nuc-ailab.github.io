@@ -1,0 +1,65 @@
+<%- partial('_partial/bg-cover') %>
+
+<main class="content">
+    <div id="card-container" class="container">
+        <div class="admissions-container">
+            <% const admissions = site.data.admissions; %>
+
+            <div class="admissions-header">
+                <h1><%- admissions.header.title %></h1>
+                <h2><%- admissions.header.subtitle %></h2>
+                <p><%- admissions.header.subtitle_en %></p>
+            </div>
+
+            <div class="admissions-section about-lab">
+                <p><%- admissions.about_lab.content %></p>
+            </div>
+
+            <div class="admissions-section research-orientation">
+                <h3><%- admissions.research_orientation.title %> <span class="en-title"><%- admissions.research_orientation.title_en %></span></h3>
+                <% admissions.research_orientation.groups.forEach(function(group) { %>
+                    <div class="group">
+                        <h4><%- group.name %></h4>
+                        <p><%- group.items %></p>
+                    </div>
+                <% }); %>
+            </div>
+
+            <div class="admissions-section results-presentation">
+                <h3><%- admissions.results_presentation.title %> <span class="en-title"><%- admissions.results_presentation.title_en %></span></h3>
+                <p><%- admissions.results_presentation.content %></p>
+            </div>
+
+            <div class="admissions-section brainstorm">
+                <h3><%- admissions.brainstorm.title %> <span class="en-title"><%- admissions.brainstorm.title_en %></span></h3>
+                <p><%- admissions.brainstorm.content %></p>
+            </div>
+
+            <div class="admissions-footer">
+                <div class="contact-info">
+                    <p><%- admissions.footer.tel %></p>
+                    <p><%- admissions.footer.qq_group %></p>
+                </div>
+                <div class="qr-code">
+                    <!-- Modal Trigger -->
+                    <a class="modal-trigger" href="#qrModal" style="cursor: pointer;">点我进群哦</a>
+                </div>
+            </div>
+
+            <!-- Modal Structure -->
+            <div id="qrModal" class="modal">
+                <div class="modal-content center-align">
+                    <h4>QQ群二维码</h4>
+                    <img src="<%- url_for(admissions.footer.qr_code_path) %>" alt="QQ群二维码" style="max-width: 80%; height: auto;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function(){
+        $('.modal').modal();
+    });
+</script>

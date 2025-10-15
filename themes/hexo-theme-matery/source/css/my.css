@@ -1,0 +1,318 @@
+/* Here is your custom css styles. */
+.bg-color {
+    background-image: linear-gradient(to right, #64B5F6 0%, #42A5F5 100%);
+}
+
+.bg-cover:after {
+    background: linear-gradient(45deg, rgba(100, 181, 246, 0.45) 0%, rgba(66, 165, 245, 0.35) 100%) !important;
+}
+
+
+/* 指导教师团队页面样式 */
+.teacher-team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.teacher-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.teacher-card:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.teacher-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.teacher-card .teacher-name {
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+}
+
+/* 确保页面内容在header下方 */
+.layout-page {
+    padding-top: 64px; 
+}
+
+/* 比赛成果页面样式 */
+.competition-results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px 0; /* Add some vertical padding */
+}
+
+.competition-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15); /* Increased transparency */
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Softer shadow */
+    backdrop-filter: blur(12px); /* More blur */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 30px; /* More internal spacing */
+    width: 80%;
+    max-width: 900px;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.competition-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.competition-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+    transform: translateY(-8px); /* Lift effect */
+}
+
+.competition-image-link {
+    flex-shrink: 0;
+}
+
+.competition-card img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px; /* Softer corners for the image */
+    border: none; /* Remove the border for a cleaner look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.competition-text {
+    flex: 1;
+    padding-left: 30px;
+}
+
+.competition-card:nth-child(even) .competition-text {
+    padding-left: 0;
+    padding-right: 30px;
+}
+
+.competition-card .competition-name {
+    margin-top: 0;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #1a237e; /* Deep blue for titles */
+}
+
+.competition-name:hover {
+    color: #3949ab; /* Lighter blue for hover */
+}
+
+.competition-card .competition-description {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #424242; /* Dark grey for readability */
+    text-align: left;
+    height: auto;
+    overflow-y: visible;
+}
+
+.wordcloud-container {
+    width: 100vw; /* Full viewport width */
+    max-width: none;
+    margin: 20px 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    text-align: center;
+}
+
+.wordcloud-image {
+    width: 85%; /* Large but not full screen */
+    max-width: 1100px;
+    height: 400px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .competition-card {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .competition-card:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .competition-text {
+        padding: 20px 0 0 0;
+    }
+
+    .competition-card:nth-child(even) .competition-text {
+        padding: 20px 0 0 0;
+    }
+
+    .competition-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .competition-text {
+        padding: 20px 10px 0 10px; /* Add horizontal padding on mobile */
+    }
+}
+
+.competition-text a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.awards-list {
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 3px solid #64b5f6;
+}
+
+.awards-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.awards-list li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #555;
+}
+
+/* 招新页面样式 */
+.admissions-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Microsoft YaHei', sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.admissions-header {
+    text-align: center;
+    border-bottom: 2px solid #64B5F6;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.admissions-header h1 {
+    font-size: 2.5em;
+    color: #42A5F5;
+    margin: 0;
+}
+
+.admissions-header h2 {
+    font-size: 1.8em;
+    margin: 10px 0;
+    color: #1E88E5;
+}
+
+.admissions-header p {
+    color: #999;
+    margin: 0;
+}
+
+.admissions-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    border-left: 5px solid #64B5F6;
+}
+
+.admissions-section h3 {
+    font-size: 1.6em;
+    color: #42A5F5;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.en-title {
+    font-size: 0.7em;
+    color: #aaa;
+    margin-left: 10px;
+}
+
+.research-orientation .group {
+    margin-bottom: 15px;
+}
+
+.research-orientation h4 {
+    font-size: 1.2em;
+    color: #1E88E5;
+    margin-bottom: 5px;
+}
+
+.admissions-section p {
+    line-height: 1.8;
+}
+
+.admissions-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #64B5F6;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.qr-code img {
+    width: 120px;
+    height: 120px;
+}
+
+.qr-code .modal-trigger {
+    color: #1E88E5;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.modal {
+    max-width: 400px;
+    border-radius: 10px;
+}

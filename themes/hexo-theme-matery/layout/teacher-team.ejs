@@ -1,0 +1,19 @@
+<%- partial('_partial/bg-cover') %>
+
+<main class="content">
+    <div id="card-container" class="container">
+        <%- page.content %>
+
+        <div class="teacher-team-container">
+            <% site.data.teachers.forEach(function(teacher) { %>
+                <div class="teacher-card">
+                    <a href="<%- teacher.profile_url %>" target="_blank" rel="noopener noreferrer">
+                        <img src="<%- teacher.image_path %>" alt="<%- teacher.name %>">
+                    </a>
+                    <p class="teacher-name"><%- teacher.name %></p>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</main>
+
