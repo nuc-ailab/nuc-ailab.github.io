@@ -63,7 +63,7 @@
     - name: "2023年 《工业巡检机器狗挑战赛》"
       prize: "国家级一等奖"
 - name: "中国机器人大赛暨Robocup世界杯公开赛"
-  description: "目前，国内影响力最大的机器人竞赛是原中国机器人大赛暨RoboCup中国公开赛。该项赛事从1999年开始到2015年，一共举办了17届，国家级A类赛事。"
+  description: "目前,国内影响力最大的机器人竞赛是原中国机器人大赛暨RoboCup中国公开赛。该项赛事从1999年开始到2015年，一共举办了17届，国家级A类赛事。"
   profile_url: "http://crc.drct-caa.org.cn/index.php"
   image_path: "/medias/images/competition_image5.jpg"
   awards:
