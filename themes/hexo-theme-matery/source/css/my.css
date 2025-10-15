@@ -316,3 +316,136 @@
     max-width: 400px;
     border-radius: 10px;
 }
+
+/* Alumni Page Styles */
+.alumni-page-container {
+    width: 95% !important;
+    max-width: none !important;
+}
+
+.alumni-card {
+    padding: 20px !important;
+}
+
+#china-map {
+    border-radius: 8px;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.alumni-container-card {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* ECharts Tooltip Styles */
+.tooltip-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 5px;
+}
+
+.tooltip-content {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.tooltip-divider {
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    margin: 6px 0;
+}
+
+.tooltip-more {
+    margin-top: 8px;
+    font-style: italic;
+    color: #ccc;
+    text-align: center;
+}
+
+/* Alumni Modal Styles */
+#alumni-modal .modal-content {
+    padding: 24px 24px 16px 24px;
+}
+
+#alumni-modal h4 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#modal-alumni-list {
+    max-height: 60vh;
+    overflow-y: auto;
+    margin: 0 -12px;
+    padding: 0 12px;
+}
+
+.modal-alumnus-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 5px solid #42A5F5;
+    transition: all 0.3s ease;
+}
+
+.modal-alumnus-card:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+.modal-alumnus-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.modal-alumnus-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1E88E5;
+}
+
+.modal-alumnus-year {
+    font-size: 0.9rem;
+    color: #888;
+    background-color: #e9e9e9;
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.modal-alumnus-detail,
+.modal-alumnus-message {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.modal-alumnus-message {
+    padding-top: 6px;
+    border-top: 1px dashed #ddd;
+    margin-top: 10px;
+    color: #777;
+}
+
+/* Scrollbar for modal list */
+#modal-alumni-list::-webkit-scrollbar {
+    width: 6px;
+}
+#modal-alumni-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+#modal-alumni-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 6px;
+}
+#modal-alumni-list::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
