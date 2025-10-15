@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+<html lang="<%= config.language %>">
+
+<body>
+    <%- partial('_partial/bg-cover') %>
+
+    <main class="content">
+        <div class="container alumni-page-container">
+            <div class="card alumni-container-card">
+                <div class="card-content alumni-card">
+                    <div class="card-title">
+                        <i class="fas fa-graduation-cap"></i>&nbsp;&nbsp;AI+移动互联创新实验室历届成员现状
+                    </div>
+                    <div id="china-map" style="width: 100%; height: 800px;"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Structure -->
+    <div id="alumni-modal" class="modal">
+        <div class="modal-content">
+            <h4 id="modal-province-name"></h4>
+            <div id="modal-alumni-list"></div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">关闭</a>
+        </div>
+    </div>
+
+    <% if (site.data.alumni && site.data.alumni.length > 0) { %>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            // Wait for Materialize to be available
+            function initializeAlumniPage() {
+                if (typeof M === 'undefined') {
+                    console.log('Materialize not yet loaded, retrying...');
+                    setTimeout(initializeAlumniPage, 100);
+                    return;
+                }
+                
+                // Initialize the specific alumni modal
+                var modalElem = document.getElementById('alumni-modal');
+                var alumniModalInstance = M.Modal.init(modalElem);
+                console.log('Modal initialized:', alumniModalInstance);
+
+                // 手动处理模态框关闭，修复无法关闭的问题。
+                var closeBtn = modalElem.querySelector('.modal-footer .modal-close');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        alumniModalInstance.close();
+                    });
+                }
+
+                var myChart = echarts.init(document.getElementById('china-map'));
+                
+                var alumniData = <%- JSON.stringify(site.data.alumni) %>;
+                
+                var provinceData = {};
+                
+                var cityToProvince = {
+                '北京': '北京', '上海': '上海', '深圳': '广东', '广州': '广东', '杭州': '浙江',
+                '成都': '四川', '西安': '陕西', '天津': '天津', '重庆': '重庆', '南京': '江苏',
+                '武汉': '湖北', '苏州': '江苏', '厦门': '福建', '长沙': '湖南', '郑州': '河南',
+                '青岛': '山东', '大连': '辽宁', '宁波': '浙江', '无锡': '江苏', '合肥': '安徽',
+                '福州': '福建', '济南': '山东', '沈阳': '辽宁', '哈尔滨': '黑龙江', '长春': '吉林',
+                '石家庄': '河北', '太原': '山西', '南昌': '江西', '贵阳': '贵州', '昆明': '云南',
+                '南宁': '广西', '海口': '海南', '兰州': '甘肃', '西宁': '青海', '银川': '宁夏',
+                '乌鲁木齐': '新疆', '拉萨': '西藏', '呼和浩特': '内蒙古'
+                };
+
+                alumniData.forEach(function(alumnus) {
+                    var province = cityToProvince[alumnus.city] || alumnus.city;
+                    if (!provinceData[province]) {
+                        provinceData[province] = [];
+                    }
+                    provinceData[province].push(alumnus);
+                });
+
+                var mapData = Object.keys(provinceData).map(function(province) {
+                    return {
+                        name: province,
+                        value: provinceData[province].length,
+                        alumni: provinceData[province]
+                    };
+                });
+                
+                var maxAlumni = Math.max.apply(Math, mapData.map(function(o) { return o.value; })) || 1;
+
+                var option = {
+                title: {
+                    text: '实验室成员地理分布',
+                    subtext: '鼠标悬浮查看摘要，点击省份查看全部',
+                    left: 'center',
+                    textStyle: {
+                        color: '#333'
+                    }
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: function (params) {
+                        if (params.data && params.data.alumni) {
+                            var content = '<div class="tooltip-title">' + params.name + ' (' + params.data.alumni.length + '人)</div>';
+                            content += '<div class="tooltip-content">';
+                            params.data.alumni.slice(0, 5).forEach(function(p, i) { // Show up to 5 in tooltip
+                                if (i > 0) content += '<div class="tooltip-divider"></div>';
+                                content += '<b>' + p.name + '</b> (' + p.graduation_year + '年毕业)';
+                            });
+                            if (params.data.alumni.length > 5) {
+                                content += '<div class="tooltip-more">... (点击查看全部)</div>';
+                            }
+                            content += '</div>';
+                            return content;
+                        }
+                        return params.name;
+                    },
+                    backgroundColor: 'rgba(25, 25, 25, 0.9)',
+                    borderColor: 'rgba(255, 255, 255, 0.2)',
+                    borderWidth: 1,
+                    borderRadius: 8,
+                    textStyle: {
+                        color: '#fff',
+                        fontSize: 13
+                    },
+                    padding: 12,
+                    extraCssText: 'box-shadow: 0 4px 12px rgba(0,0,0,0.3); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);'
+                },
+                visualMap: {
+                    min: 0,
+                    max: maxAlumni,
+                    left: 'left',
+                    top: 'bottom',
+                    text: ['多', '少'],
+                    calculable: true,
+                    inRange: {
+                        color: ['#E0F3F8', '#ABD9E9', '#74ADD1', '#4575B4', '#313695'].reverse()
+                    },
+                    textStyle: {
+                        color: '#333'
+                    }
+                },
+                series: [
+                    {
+                        name: '成员分布',
+                        type: 'map',
+                        map: 'china',
+                        roam: true,
+                        label: {
+                            show: true,
+                            color: 'rgba(0,0,0,0.7)',
+                            fontSize: 9,
+                            formatter: function(params) {
+                                if (params.data && params.data.alumni) {
+                                    return params.data.alumni.slice(0, 2).map(function(p) {
+                                        return p.name.split('')[0]; // Display first character of name
+                                    }).join(' ');
+                                }
+                                return '';
+                            }
+                        },
+                        itemStyle: {
+                            borderColor: 'rgba(0, 0, 0, 0.2)',
+                            borderWidth: 1
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                color: '#000',
+                                fontSize: 12
+                            },
+                            itemStyle: {
+                                areaColor: '#FFD700'
+                            }
+                        },
+                        data: mapData
+                    }
+                ]
+                };
+
+                myChart.setOption(option);
+
+                myChart.on('click', function(params) {
+                    if (params.data && params.data.alumni) {
+                        var provinceName = params.name;
+                        var alumniInProvince = params.data.alumni;
+                        
+                        document.getElementById('modal-province-name').innerText = provinceName + ' - ' + alumniInProvince.length + '位成员';
+                        
+                        var listHtml = '';
+                        alumniInProvince.forEach(function(p) {
+                            listHtml += `
+                            <div class="modal-alumnus-card">
+                                <div class="modal-alumnus-info">
+                                    <span class="modal-alumnus-name">${p.name}</span>
+                                    <span class="modal-alumnus-year">${p.graduation_year}年毕业</span>
+                                </div>
+                                <div class="modal-alumnus-detail">
+                                    <i class="fas fa-building"></i>&nbsp;${p.company} - ${p.city}
+                                </div>
+                                <div class="modal-alumnus-message">
+                                    <i class="fas fa-comment-dots"></i>&nbsp;${p.message || '暂无留言'}
+                                </div>
+                            </div>
+                            `;
+                        });
+
+                        document.getElementById('modal-alumni-list').innerHTML = listHtml;
+                        alumniModalInstance.open();
+                    }
+                });
+
+                window.addEventListener('resize', function () {
+                    myChart.resize();
+                });
+            }
+            
+            // Start initialization
+            initializeAlumniPage();
+        });
+    </script>
+    <% } else { %>
+    <p>暂无成员数据。</p>
+    <% } %>
+
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.materialize) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.masonry) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.aos) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.scrollProgress) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.lightgallery) %>"></script>
+    <script src="<%- theme.jsDelivr.url %><%- url_for(theme.libs.js.matery) %>"></script>
+</body>
+</html>
