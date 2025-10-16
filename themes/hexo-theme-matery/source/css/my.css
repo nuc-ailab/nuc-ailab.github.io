@@ -449,3 +449,70 @@
 #modal-alumni-list::-webkit-scrollbar-thumb:hover {
     background: #aaa;
 }
+
+/* 团建活动页面样式 - 视差滚动相册 */
+.team-building-scroller {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-y: hidden;
+    padding: 2rem 1rem;
+}
+
+.team-building-scroller section {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.team-building-scroller section:nth-child(odd) {
+    animation: scroller linear;
+    animation-timeline: scroll(root);
+    flex-direction: column-reverse;
+    translate: 0% calc(-100% + 100vh);
+}
+
+.team-building-scroller section img {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: 0.3s ease;
+    width: 100%;
+    object-fit: cover;
+}
+
+.team-building-scroller section img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+@keyframes scroller {
+    to {
+        translate: 0% calc(100% - 100vh);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .team-building-scroller {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        padding: 1rem 0.5rem;
+    }
+    .team-building-scroller section {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-building-scroller {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .team-building-scroller section:nth-child(odd) {
+        /* 在单列布局上禁用视差效果 */
+        animation: none;
+        flex-direction: column;
+        translate: 0;
+    }
+}
