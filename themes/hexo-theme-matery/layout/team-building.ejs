@@ -1,0 +1,34 @@
+<%- partial('_partial/bg-cover') %>
+<%
+const images = site.data.team_building || [];
+const numColumns = 3;
+const columns = Array.from({ length: numColumns }, () => []);
+
+if (images.length > 0) {
+    // Distribute images into columns
+    images.forEach((image, index) => {
+        columns[index % numColumns].push(image);
+    });
+
+    // Duplicate images to make columns long enough for the scrolling effect
+    columns.forEach(col => {
+        const originalImages = [...col];
+        col.push(...originalImages);
+        col.push(...originalImages);
+        // Add more duplicates to prevent blank space at the bottom, especially when a header is present.
+        col.push(...originalImages);
+        col.push(...originalImages);
+    });
+}
+%>
+
+<%# This parallax effect works best on a full-page scroll, so we omit the standard page cover. %>
+<main class="team-building-scroller">
+    <% columns.forEach(function(col) { %>
+        <section>
+            <% col.forEach(function(imageUrl) { %>
+                <img src="<%- imageUrl %>" alt="Team Building Image">
+            <% }); %>
+        </section>
+    <% }); %>
+</main>
