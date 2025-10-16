@@ -516,3 +516,13 @@
         translate: 0;
     }
 }
+
+/* 导航栏 Logo 调整 */
+header .brand-logo .logo-img {
+    height: 70px;
+    padding-bottom: 5px;
+}
+
+header .brand-logo .logo-span {
+    font-size: 3.0rem;
+}

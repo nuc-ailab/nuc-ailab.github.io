@@ -7,7 +7,7 @@ title: Ailab
 subtitle: "中北大学AI+移动互联创新实验室"
 description: ""
 keywords:
-author: John Doe
+author: Ailab
 language: zh-CN
 timezone: ""
 
@@ -104,4 +104,3 @@ deploy:
   type: git
   repo: https://github.com/nuc-ailab/nuc-ailab.github.io.git
   branch: main
-
