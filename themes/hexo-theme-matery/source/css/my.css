@@ -1,6 +1,6 @@
 /* Here is your custom css styles. */
 .bg-color {
-    background-image: linear-gradient(to right, #64B5F6 0%, #42A5F5 100%);
+    background-image: linear-gradient(to left, #0700DE 0%, #DDFFC9 100%);
 }
 
 .bg-cover:after {
