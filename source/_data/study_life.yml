@@ -1,0 +1,55 @@
+- year: "2025"
+  title: "AI实验室研究成果"
+  description: "在人工智能领域取得重大突破，多项技术获得专利认证"
+  image_path: "/medias/life/life1.png"
+  content: "团队在深度学习、计算机视觉、自然语言处理等领域开展了深入研究，发表了多篇高质量论文，并成功申请了多项技术专利。"
+  tags: ["研究", "专利", "论文"]
+
+- year: "2024"
+  title: "学科竞赛丰收年"
+  description: "在各类国家级学科竞赛中屡获殊荣，展现了实验室强大的技术实力"
+  image_path: "/medias/life/life2.png"
+  content: "实验室成员积极参与各类学科竞赛，在计算机设计大赛、服务外包大赛、人工智能大赛等多个赛事中获得优异成绩，累计获得国家级奖项20余项。"
+  tags: ["竞赛", "获奖", "团队"]
+
+- year: "2024"
+  title: "产学研合作项目"
+  description: "与多家知名企业建立合作关系，推动科研成果产业化"
+  image_path: "/medias/life/life3.png"
+  content: "实验室与华为、百度、阿里巴巴等企业开展深度合作，共同开发了多个前沿技术项目，实现了理论研究与实际应用的完美结合。"
+  tags: ["合作", "产业化", "项目"]
+
+- year: "2023"
+  title: "国际学术交流"
+  description: "参加多个国际会议，与世界顶尖研究机构展开学术交流"
+  image_path: "/medias/life/life4.png"
+  content: "实验室师生积极参与国际学术交流，在CVPR、ICCV、AAAI等顶级会议上发表论文，与MIT、斯坦福等知名学府建立了良好的合作关系。"
+  tags: ["国际", "会议", "交流"]
+
+- year: "2023"
+  title: "人才培养成果"
+  description: "培养了一批优秀的AI人才，就业质量和深造率持续提升"
+  image_path: "/medias/life/life5.png"
+  content: "实验室注重人才培养，采用导师制和项目制相结合的培养模式，学生在各类竞赛和实习中表现优异，毕业生深受用人单位欢迎。"
+  tags: ["人才", "培养", "就业"]
+
+- year: "2022"
+  title: "实验室建设升级"
+  description: "完成了实验室硬件设施的全面升级，为科研提供有力保障"
+  image_path: "/medias/life/life6.png"
+  content: "新增了高性能GPU集群、边缘计算设备、机器人平台等先进设备，为深度学习、计算机视觉、机器人等方向的研究提供了强有力的硬件支撑。"
+  tags: ["设备", "升级", "基础设施"]
+
+- year: "2022"
+  title: "学术成果发表"
+  description: "在顶级期刊和会议上发表多篇高影响因子论文"
+  image_path: "/medias/life/life7.png"
+  content: "实验室在IEEE Transactions、ACM Computing Surveys等顶级期刊上发表论文10余篇，在ICML、NeurIPS等顶级会议上发表论文15篇。"
+  tags: ["论文", "期刊", "影响因子"]
+
+- year: "2021"
+  title: "实验室成立"
+  description: "人工智能实验室正式成立，开启科研新征程"
+  image_path: "/medias/life/life8.png"
+  content: "在学校和学院的大力支持下，人工智能实验室正式成立，汇聚了一支年轻有为的科研团队，致力于在AI领域做出重要贡献。"
+  tags: ["成立", "起点", "愿景"]
