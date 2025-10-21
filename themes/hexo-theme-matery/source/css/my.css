@@ -517,6 +517,388 @@
     }
 }
 
+/* 学习生活页面时间轴样式 */
+.study-life-shell {
+    width: 98%;
+    max-width: 1600px;
+    position: relative;
+    padding: 40px 40px;
+    transition: 0.3s ease 0s;
+    background: linear-gradient(135deg, #64B5F6 0%, #E1F5FE 100%);
+    border-radius: 20px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.study-life-shell:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    content: "";
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+.study-life-timeline {
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    max-width: 1500px;
+    width: 100%;
+    position: relative;
+}
+
+.study-life-timeline:before {
+    position: absolute;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    margin-left: -1.5px;
+    content: "";
+    background: linear-gradient(180deg, rgba(66, 165, 245, 0.1) 0%, rgba(100, 181, 246, 0.8) 50%, rgba(66, 165, 245, 0.1) 100%);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+.study-life-item {
+    padding: 40px 0;
+    opacity: 0.3;
+    filter: blur(3px);
+    transition: all 0.6s ease;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    position: relative;
+    transform: translateY(-60px);
+    gap: 40px;
+    z-index: 2;
+}
+
+/* 左图右文布局（第1、3、5项等） */
+.study-life-item.item-left-image {
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.study-life-item.item-left-image .study-life-image-container {
+    width: 48%;
+    max-width: 600px;
+    padding-right: 20px;
+    order: 1;
+}
+
+.study-life-item.item-left-image .study-life-content {
+    width: 48%;
+    margin-left: 20px;
+    order: 2;
+}
+
+/* 左文右图布局（第2、4、6项等） */
+.study-life-item.item-right-image {
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.study-life-item.item-right-image .study-life-content {
+    width: 48%;
+    margin-right: 20px;
+    order: 1;
+}
+
+.study-life-item.item-right-image .study-life-image-container {
+    width: 48%;
+    max-width: 600px;
+    padding-left: 20px;
+    order: 2;
+}
+
+/* 时间轴标签 - 隐藏标题标签 */
+.study-life-item:before {
+    display: none;
+}
+
+.study-life-item--active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
+
+.study-life-item--active .study-life-year {
+    color: #0D47A1;
+    transform: scale(1.05);
+}
+
+/* 图片容器 */
+.study-life-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.study-life-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.study-life-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* 内容容器 */
+.study-life-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px 0 rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.study-life-content:hover {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 15px 45px 0 rgba(31, 38, 135, 0.2);
+    transform: translateY(-5px);
+}
+
+.study-life-year {
+    color: #1565C0;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    transition: 0.4s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.study-life-title {
+    color: #1E88E5;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+}
+
+.study-life-description {
+    color: #424242;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.study-life-detail {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.study-life-tags {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.study-life-tag {
+    background: linear-gradient(135deg, #64B5F6 0%, #42A5F5 100%);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 3px 10px rgba(100, 181, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.study-life-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(100, 181, 246, 0.4);
+}
+
+/* 平板端适配 */
+@media only screen and (max-width: 1024px) {
+    .study-life-shell {
+        width: 98%;
+        max-width: 1200px;
+        padding: 35px 30px;
+    }
+    
+    .study-life-timeline {
+        max-width: 1100px;
+    }
+    
+    .study-life-item.item-left-image .study-life-image-container,
+    .study-life-item.item-left-image .study-life-content,
+    .study-life-item.item-right-image .study-life-image-container,
+    .study-life-item.item-right-image .study-life-content {
+        width: 47%;
+    }
+    
+    .study-life-item {
+        gap: 30px;
+    }
+    
+    .study-life-img {
+        height: 250px;
+    }
+    
+    .study-life-content {
+        padding: 30px;
+    }
+    
+    .study-life-year {
+        font-size: 2.5rem;
+    }
+    
+    .study-life-title {
+        font-size: 1.6rem;
+    }
+}
+
+/* 移动端适配 */
+@media only screen and (max-width: 768px) {
+    .study-life-shell {
+        width: 100%;
+        max-width: none;
+        padding: 40px 15px;
+        margin: 10px auto;
+    }
+    
+    .study-life-timeline:before {
+        left: 30px;
+        width: 2px;
+    }
+    
+    .study-life-item {
+        align-self: baseline !important;
+        width: 100% !important;
+        padding: 0 0 40px 60px;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .study-life-item.item-left-image,
+    .study-life-item.item-right-image {
+        justify-content: flex-start !important;
+        flex-direction: column !important;
+    }
+    
+    .study-life-item.item-left-image .study-life-image-container,
+    .study-life-item.item-right-image .study-life-image-container {
+        width: 100% !important;
+        padding: 0 !important;
+        order: 1 !important;
+        max-width: none !important;
+    }
+    
+    .study-life-item.item-left-image .study-life-content,
+    .study-life-item.item-right-image .study-life-content {
+        width: 100% !important;
+        margin: 0 !important;
+        order: 2 !important;
+    }
+
+    .study-life-item:before {
+        display: none !important;
+    }
+
+    .study-life-img {
+        height: 200px;
+    }
+
+    .study-life-content {
+        padding: 25px;
+    }
+
+    .study-life-year {
+        font-size: 2.2rem;
+        margin: 0 0 15px 0;
+    }
+
+    .study-life-title {
+        font-size: 1.4rem;
+    }
+    
+    .study-life-description {
+        font-size: 1.1rem;
+    }
+    
+    .study-life-detail {
+        font-size: 0.95rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .study-life-shell {
+        width: 100%;
+        padding: 30px 10px;
+        margin: 5px auto;
+    }
+    
+    .study-life-item {
+        padding: 0 0 30px 50px;
+        gap: 15px !important;
+    }
+    
+    .study-life-timeline:before {
+        left: 25px;
+    }
+    
+    .study-life-item:before {
+        display: none !important;
+    }
+
+    .study-life-img {
+        height: 180px;
+    }
+
+    .study-life-content {
+        padding: 20px;
+    }
+
+    .study-life-year {
+        font-size: 1.8rem;
+    }
+
+    .study-life-title {
+        font-size: 1.2rem;
+    }
+    
+    .study-life-description {
+        font-size: 1rem;
+    }
+    
+    .study-life-detail {
+        font-size: 0.9rem;
+    }
+
+    .study-life-tags {
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .study-life-tag {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+    }
+}
+
 /* 导航栏 Logo 调整 */
 header .brand-logo .logo-img {
     height: 70px;

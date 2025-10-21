@@ -1,0 +1,102 @@
+<%- partial('_partial/bg-cover') %>
+
+<main class="content">
+    <div id="card-container" class="container">
+        <%- page.content %>
+
+        <div class="study-life-shell" id="study-life-shell">
+            <div class="study-life-timeline">
+                <% site.data.study_life.forEach(function(item, index) { %>
+                    <div class="study-life-item <% if (index % 2 === 0) { %>item-left-image<% } else { %>item-right-image<% } %>" data-text="<%- item.title %>">
+                        <% if (index % 2 === 0) { %>
+                            <!-- 奇数项：左图右文 -->
+                            <div class="study-life-image-container">
+                                <img src="<%- item.image_path %>" alt="<%- item.title %>" class="study-life-img">
+                            </div>
+                            <div class="study-life-content">
+                                <h2 class="study-life-year"><%- item.year %></h2>
+                                <h3 class="study-life-title"><%- item.title %></h3>
+                                <p class="study-life-description"><%- item.description %></p>
+                                <p class="study-life-detail"><%- item.content %></p>
+                                <% if (item.tags && item.tags.length > 0) { %>
+                                    <div class="study-life-tags">
+                                        <% item.tags.forEach(function(tag) { %>
+                                            <span class="study-life-tag"><%- tag %></span>
+                                        <% }); %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        <% } else { %>
+                            <!-- 偶数项：左文右图 -->
+                            <div class="study-life-content">
+                                <h2 class="study-life-year"><%- item.year %></h2>
+                                <h3 class="study-life-title"><%- item.title %></h3>
+                                <p class="study-life-description"><%- item.description %></p>
+                                <p class="study-life-detail"><%- item.content %></p>
+                                <% if (item.tags && item.tags.length > 0) { %>
+                                    <div class="study-life-tags">
+                                        <% item.tags.forEach(function(tag) { %>
+                                            <span class="study-life-tag"><%- tag %></span>
+                                        <% }); %>
+                                    </div>
+                                <% } %>
+                            </div>
+                            <div class="study-life-image-container">
+                                <img src="<%- item.image_path %>" alt="<%- item.title %>" class="study-life-img">
+                            </div>
+                        <% } %>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+(function ($) {
+    $.fn.studyLifeTimeline = function () {
+        var selectors = {
+            id: $(this),
+            item: $(this).find(".study-life-item"),
+            activeClass: "study-life-item--active",
+            img: ".study-life-img"
+        };
+        
+        // 激活第一个项目，但不设置背景图（使用固定背景）
+        selectors.item.eq(0).addClass(selectors.activeClass);
+        
+        var itemLength = selectors.item.length;
+        
+        $(window).scroll(function () {
+            var max, min;
+            var pos = $(this).scrollTop();
+            var windowHeight = $(window).height();
+            
+            selectors.item.each(function (i) {
+                min = $(this).offset().top - windowHeight / 2;
+                max = $(this).offset().top + $(this).height() / 2;
+                
+                // 当项目进入视窗中央时激活
+                if (pos >= min && pos <= max) {
+                    // 移除所有激活状态
+                    selectors.item.removeClass(selectors.activeClass);
+                    
+                    // 激活当前项目
+                    $(this).addClass(selectors.activeClass);
+                    
+                    // 不再更新背景图，使用固定背景
+                }
+            });
+        });
+        
+        // 触发初始滚动事件
+        $(window).trigger('scroll');
+    };
+})(jQuery);
+
+// 页面加载完成后初始化时间轴
+$(document).ready(function() {
+    $("#study-life-shell").studyLifeTimeline();
+});
+</script>
