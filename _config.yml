@@ -103,4 +103,4 @@ theme: hexo-theme-matery
 deploy:
   type: git
   repo: https://github.com/nuc-ailab/nuc-ailab.github.io.git
-  branch: main
+  branch: deploy
